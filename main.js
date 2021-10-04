@@ -1,28 +1,42 @@
-name_of_the_student_array=[];
-function submit(){
-    var display_student_array=[];
-    for(var j=1;j<=4;j++){
-        var name_of_the_student=document.getElementById("name_of_the_student_"+j);
-          name_of_the_student_array.push(name_of_the_student);
-    }
-    var length_of_name_of_student_array=name_of_the_student_array.length;
-    for(var k=0;k<length_of_name_of_student_array;k++){
-        display_student_array.push("<h4>name"+name_of_the_student_array[k]+"</h4>")
-    }
-    document.getElementById("display_name_with_commas").innerHTML=display_student_array;
-    var remove_commas=display_student_array.join(" ");
-    document.getElementById("display_name_without_commas").innerHTML=remove_commas;
-    }
-    function sorting(){
-         name_of_the_student_array.sort();
-         var display_student_array_sorting=[];
-         var length_of_name_of_student_array=name_of_the_student_array.length;
-         for(var k=0;k<length_of_name_of_student_array;k++){
-             display_student_array_sorting.push("<h4>name"+name_of_the_student_array[k]+"</h4>")
-         }
-         var remove_commas=display_student_array_sorting.join(" ");
-    document.getElementById("display_name_without_commas").innerHTML=remove_commas;
-    }
-    function update(){
-        document.getElementById("display_name_without_commas").innerHTML="<h1>"+name_of_the_student_array+"</h1>"
-    }
+
+canvas = document.getElementById("myCanvas");
+ctx= canvas.getContext("2d");
+
+color = "red"; 
+
+ctx.beginPath();
+ctx.strokeStyle = color;
+ctx.lineWidth = 2;
+ctx.arc(200, 200, 40 ,0 , 2*Math.PI);
+ctx.stroke();
+
+canvas.addEventListener("mousedown", my_mousedown);
+
+function my_mousedown(e)
+{
+   
+    color = document.getElementById("color").value;
+    console.log(color);
+   
+     mouse_x = e.clientX - canvas.offsetLeft;
+     mouse_y = e.clientY - canvas.offsetTop;
+
+    console.log("X = " + mouse_x + " ,Y =  " + mouse_y);
+    circle(mouse_x , mouse_y);    
+}
+
+function circle(mouse_x , mouse_y)
+{
+ctx.beginPath();
+ctx.strokeStyle = color;
+ctx.lineWidth = 2;
+ctx.arc(mouse_x, mouse_y, 40 ,0 , 2*Math.PI);
+ctx.stroke();
+}
+
+function clearArea()
+{
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+	
